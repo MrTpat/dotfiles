@@ -1,0 +1,25 @@
+[alias]
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+        fixup = commit --amend -C@
+        reword = commit --amend
+        praise = blame
+	lolaa = lola
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+[core]
+	pager = cat
+	editor = vim
+	whitespace = cr-at-eol
+	autocrlf = input
+[user]
+	name = Tilak Patel
+	email = ptilak142@gmail.com
+[log]
+	date = iso
+[url "git@github.com:"]
+	insteadOf = https://github.com/
