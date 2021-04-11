@@ -118,7 +118,8 @@ fi
 export PATH="$PATH:~/.local/bin/"
 export PATH=$PATH:/opt/gradle/gradle-6.8.3/bin
 export PATH=$PATH:/opt/nodejs/node-v14.16.0-linux-x64/bin
-export PATH=$PATH:/usr/lib/jvm/jdk-11.0.10/bin
 alias vim=nvim.appimage
 alias serve="ngrok tcp 22"
 export GOOGLE_APPLICATION_CREDENTIALS="~/Downloads/voting-app-2de2f-firebase-adminsdk-yejv2-13f7e3dc5b.json"
+alias browse=Vieb-4.3.0.AppImage
+export PATH="$PATH:/usr/bin/"
