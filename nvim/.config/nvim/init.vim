@@ -28,6 +28,7 @@ set noswapfile
 set number
 set clipboard=unnamed
 set nohlsearch
+set exrc
 
 
 "Double click space for doc outline
@@ -42,16 +43,16 @@ endif
 
 " Make a new directory if requesting to make new nested file
 function s:MkNonExDir(file, buf)
-	if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-		let dir=fnamemodify(a:file, ':h')
-		if !isdirectory(dir)
-			call mkdir(dir, 'p')
-		endif
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+	let dir=fnamemodify(a:file, ':h')
+	if !isdirectory(dir)
+	    call mkdir(dir, 'p')
 	endif
+    endif
 endfunction
 augroup BWCCreateDir
-	autocmd!
-	autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -59,9 +60,9 @@ augroup END
 " other plugin before putting this into your config.
 " COC Settings
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+	    \ pumvisible() ? "\<C-n>" :
+	    \ <SID>check_back_space() ? "\<TAB>" :
+	    \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -80,3 +81,15 @@ colorscheme dracula
 " JS syntax highlight only when i enter a buffer
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
+" COC vim extensions
+let g:coc_global_extensions = [
+	    \'coc-java',
+	    \'coc-pyright',
+	    \]
+
+" Used for stuck language server
+"CocCommand java.clean.workspace
+"
+
+lua require('config')
