@@ -5,12 +5,13 @@ Plug 'junegunn/fzf.vim'
 Plug 'dracula/vim',{'as':'dracula'}
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
-Plug 'uiiaoo/java-syntax.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'liuchengxu/vista.vim'
 call plug#end()
 
 set hidden
@@ -32,7 +33,7 @@ set exrc
 
 
 "Double click space for doc outline
-nnoremap <silent><nowait> <space><space>  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <space><space>  :<C-u>Vista finder coc<cr>
 
 " Needed to have colors inside of TMUX
 if exists('+termguicolors')
@@ -78,10 +79,6 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let g:airline_theme='dracula'
 colorscheme dracula
 
-" JS syntax highlight only when i enter a buffer
-autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
-autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
-
 " COC vim extensions
 let g:coc_global_extensions = [
 	    \'coc-java',
@@ -91,5 +88,8 @@ let g:coc_global_extensions = [
 " Used for stuck language server
 "CocCommand java.clean.workspace
 "
+"
+
+let g:vista_fzf_preview = ['right:50%']
 
 lua require('config')
