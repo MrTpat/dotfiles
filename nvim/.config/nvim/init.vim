@@ -60,6 +60,10 @@ augroup END
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 " COC Settings
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
 inoremap <silent><expr> <TAB>
 	    \ pumvisible() ? "\<C-n>" :
 	    \ <SID>check_back_space() ? "\<TAB>" :
@@ -83,6 +87,8 @@ colorscheme dracula
 let g:coc_global_extensions = [
 	    \'coc-java',
 	    \'coc-pyright',
+	    \'coc-json',
+	    \'coc-tsserver'
 	    \]
 
 " Used for stuck language server
