@@ -88,7 +88,8 @@ let g:coc_global_extensions = [
 	    \'coc-java',
 	    \'coc-pyright',
 	    \'coc-json',
-	    \'coc-tsserver'
+	    \'coc-tsserver',
+	    \'coc-clangd'
 	    \]
 
 " Used for stuck language server

@@ -116,7 +116,9 @@ export PATH="$PATH:~/.local/bin/"
 export PATH=$PATH:/opt/gradle/gradle-6.8.3/bin
 export PATH=$PATH:/opt/nodejs/node-v14.16.0-linux-x64/bin
 alias vim=nvim
-alias cat=ccat
+alias cat=batcat
+alias ls='colorls --sd -A --dark'
+alias tree='colorls --dark --tree'
 export PATH="$PATH:/usr/bin/"
 export JAVA_HOME="/usr/lib/jvm/jdk-11.0.10"
 export PATH="$PATH:/opt/gradle/gradle-7.0/bin"
@@ -124,9 +126,10 @@ export PATH="$PATH:/opt/maven/apache-maven-3.8.1/bin"
 export PATH="$PATH:/usr/lib/jvm/jdk-11.0.10/bin"
 export PATH="$PATH:/home/tilak/.local/bin"
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+export EDITOR=nvim
 autoload -U promptinit; promptinit
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-MODE_INDICATOR="%F{yellow}+%f"
+source $(dirname $(gem which colorls))/tab_complete.sh
