@@ -12,6 +12,7 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'liuchengxu/vista.vim'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 set hidden
@@ -30,6 +31,7 @@ set number
 set clipboard=unnamed
 set nohlsearch
 set exrc
+set mouse=a
 
 
 "Double click space for doc outline
@@ -89,7 +91,8 @@ let g:coc_global_extensions = [
 	    \'coc-pyright',
 	    \'coc-json',
 	    \'coc-tsserver',
-	    \'coc-clangd'
+	    \'coc-clangd',
+	    \'coc-html'
 	    \]
 
 " Used for stuck language server
@@ -98,5 +101,7 @@ let g:coc_global_extensions = [
 "
 
 let g:vista_fzf_preview = ['right:50%']
+" let g:airline#extensions#whitespace#enabled = 0
+silent! call airline#extensions#whitespace#disable()
 
 lua require('config')

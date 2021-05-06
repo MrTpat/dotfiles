@@ -116,9 +116,11 @@ export PATH="$PATH:~/.local/bin/"
 export PATH=$PATH:/opt/gradle/gradle-6.8.3/bin
 export PATH=$PATH:/opt/nodejs/node-v14.16.0-linux-x64/bin
 alias vim=nvim
-alias cat=batcat
+alias cat=bat
 alias ls='colorls --sd -A --dark'
 alias tree='colorls --dark --tree'
+alias mkdir='mkdir -p'
+alias pdf='zathura --fork'
 export PATH="$PATH:/usr/bin/"
 export JAVA_HOME="/usr/lib/jvm/jdk-11.0.10"
 export PATH="$PATH:/opt/gradle/gradle-7.0/bin"
@@ -133,3 +135,6 @@ autoload -U promptinit; promptinit
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 source $(dirname $(gem which colorls))/tab_complete.sh
+
+#plugins using zplug
+source ~/.zplug/init.zsh
