@@ -9,7 +9,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/tilak/.oh-my-zsh"
+export ZSH="/Users/tpatel/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -112,19 +112,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH="$PATH:/usr/local/bin"
-export PATH="$PATH:/usr/local/bin/node/bin"
-export PATH="$PATH:/usr/local/bin/chromium"
-export PATH="$PATH:/usr/local/bin/java/jdk-11.0.11+9/bin"
-export PATH="$PATH:/home/tilak/.local/bin"
-export PATH="$PATH:/home/tilak/.local/share/gem/ruby/3.0.0/bin"
+export PATH="$PATH:/usr/local/bin/nvim-osx64/bin"
 export EDITOR=nvim
-export TERMINAL=konsole
 alias ls='colorls --sd -A --dark'
 alias tree='colorls --dark --tree'
 autoload -U promptinit; promptinit
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-source $(dirname $(gem which colorls))/tab_complete.sh
