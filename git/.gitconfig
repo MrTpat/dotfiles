@@ -21,5 +21,3 @@
 	email = ptilak142@gmail.com
 [log]
 	date = iso
-[url "git@github.com:"]
-	insteadOf = https://github.com/

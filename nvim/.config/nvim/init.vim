@@ -4,7 +4,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'dracula/vim',{'as':'dracula'}
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
@@ -12,7 +11,7 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'liuchengxu/vista.vim'
-Plug 'vim-airline/vim-airline'
+Plug 'chrisbra/Colorizer'
 call plug#end()
 
 set hidden
@@ -82,7 +81,6 @@ nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 nnoremap <c-p> :FZF<cr>
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
-let g:airline_theme='dracula'
 colorscheme dracula
 
 " COC vim extensions
@@ -92,7 +90,8 @@ let g:coc_global_extensions = [
 	    \'coc-json',
 	    \'coc-tsserver',
 	    \'coc-clangd',
-	    \'coc-html'
+	    \'coc-html',
+	    \'coc-rls'
 	    \]
 
 " Used for stuck language server
@@ -101,7 +100,9 @@ let g:coc_global_extensions = [
 "
 
 let g:vista_fzf_preview = ['right:50%']
+
+" unicode symbols
 " let g:airline#extensions#whitespace#enabled = 0
-silent! call airline#extensions#whitespace#disable()
+" silent! call airline#extensions#whitespace#disable()
 
 lua require('config')
