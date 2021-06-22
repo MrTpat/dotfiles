@@ -112,14 +112,16 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH="$PATH:/usr/local/bin/nvim-osx64/bin"
-export EDITOR=nvim
 alias ls='colorls --sd -A --dark'
 alias tree='colorls --dark --tree'
+alias vim='nvim'
 autoload -U promptinit; promptinit
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/tpatel/.sdkman"
+[[ -s "/Users/tpatel/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/tpatel/.sdkman/bin/sdkman-init.sh"
