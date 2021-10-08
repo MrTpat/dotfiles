@@ -1,14 +1,12 @@
 call plug#begin()
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'dracula/vim',{'as':'dracula'}
+Plug 'morhetz/gruvbox'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'liuchengxu/vista.vim'
 Plug 'chrisbra/Colorizer'
 call plug#end()
@@ -80,7 +78,7 @@ nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 nnoremap <c-p> :FZF<cr>
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
-colorscheme dracula
+colorscheme gruvbox
 
 " COC vim extensions
 let g:coc_global_extensions = [

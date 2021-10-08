@@ -83,6 +83,7 @@ plugins=(
     pip
     colorize
     vi-mode
+    zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -118,9 +119,15 @@ export PATH="$PATH:/usr/local/bin/chromium"
 export PATH="$PATH:/usr/local/bin/java/jdk-11.0.11+9/bin"
 export PATH="$PATH:/home/tilak/.local/bin"
 export PATH="$PATH:/home/tilak/.local/share/gem/ruby/3.0.0/bin"
+export PATH="$PATH:~/.local/bin"
+export PATH="$PATH:/home/tilak/.local/node-v14.17.6-linux-x64/bin"
+export PATH="$PATH:/usr/local/idea-IC-212.5284.40/bin"
+export PATH="$PATH:/usr/local/pycharm-community-2021.2.2/bin"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export EDITOR=nvim
 export TERMINAL=konsole
-alias ls='colorls --sd -A --dark'
 alias tree='colorls --dark --tree'
 autoload -U promptinit; promptinit
 
@@ -128,3 +135,14 @@ autoload -U promptinit; promptinit
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 source $(dirname $(gem which colorls))/tab_complete.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+bindkey '^I'      autosuggest-accept
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_USE_ASYNC=true
