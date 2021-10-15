@@ -4,6 +4,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
 Plug 'chrisbra/Colorizer'
 Plug 'tpope/vim-fugitive'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 call plug#end()
 
 set hidden

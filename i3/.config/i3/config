@@ -198,6 +198,8 @@ bar {
 	mode invisible
 }
 
+client.focused          #4c7899 #98971a #ffffff #2e9ef4 #98971a 
+
 
 #######################################################################
 # automatically start i3-config-wizard to offer the user to create a
