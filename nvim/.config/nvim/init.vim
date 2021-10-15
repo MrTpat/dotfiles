@@ -2,13 +2,8 @@ call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'jparise/vim-graphql'
-Plug 'liuchengxu/vista.vim'
 Plug 'chrisbra/Colorizer'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 set hidden
@@ -31,8 +26,6 @@ set mouse=a
 
 
 "Double click space for doc outline
-nnoremap <silent><nowait> <space><space>  :<C-u>Vista finder coc<cr>
-
 " Needed to have colors inside of TMUX
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -67,36 +60,15 @@ inoremap <silent><expr> <TAB>
 	    \ <SID>check_back_space() ? "\<TAB>" :
 	    \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-" Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 
 " FZF Settings
-nnoremap <c-p> :FZF<cr>
+nnoremap <c-p> :Files<cr>
+nnoremap <c-f> :Ag<cr>
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 colorscheme gruvbox
 
-" COC vim extensions
-let g:coc_global_extensions = [
-	    \'coc-java',
-	    \'coc-pyright',
-	    \'coc-json',
-	    \'coc-tsserver',
-	    \'coc-clangd',
-	    \'coc-html',
-	    \'coc-rls'
-	    \]
-
-" Used for stuck language server
-"CocCommand java.clean.workspace
-"
-"
-
-let g:vista_fzf_preview = ['right:50%']
+let g:fzf_preview_window = ['right:75%']
 
 " unicode symbols
 " let g:airline#extensions#whitespace#enabled = 0
