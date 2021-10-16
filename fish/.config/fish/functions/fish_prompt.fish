@@ -66,7 +66,7 @@ function fish_prompt
         set arrow_color "$red"
     end
 
-    set -l arrow "$arrow_color➜ "
+    set -l arrow "$arrow_color [$__last_command_exit_status] "
     if test "$USER" = 'root'
         set arrow "$arrow_color# "
     end
@@ -79,7 +79,7 @@ function fish_prompt
 
         set -l dirty (_is_repo_dirty $repo_type)
         if test -n "$dirty"
-            set -l dirty "$yellow ✗"
+            set -l dirty "$yellow"
             set repo_info "$repo_info$dirty"
         end
     end
