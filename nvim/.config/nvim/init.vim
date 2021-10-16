@@ -53,7 +53,7 @@ augroup BWCCreateDir
 augroup END
 
 " FZF Settings
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden -g ""'
 nnoremap <c-p> :Files<cr>
 nnoremap <c-f> :Ag<cr>
 
