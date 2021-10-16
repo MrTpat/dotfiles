@@ -2,15 +2,15 @@ function fish_mode_prompt
   set_color --bold
   switch $fish_bind_mode
     case default
-      echo 'NORMAL '
+      echo 'NORMAL'
     case insert
-      echo 'INSERT '
+      echo 'INSERT'
     case replace_one
-      echo 'REPLACE '
+      echo 'REPLACE'
     case visual
-      echo 'VISUAL '
+      echo 'VISUAL'
     case '*'
-      echo '? '
+      echo '?'
   end
   set_color normal
 end
