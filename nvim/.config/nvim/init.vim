@@ -53,6 +53,7 @@ augroup BWCCreateDir
 augroup END
 
 " FZF Settings
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 nnoremap <c-p> :Files<cr>
 nnoremap <c-f> :Ag<cr>
 
@@ -70,5 +71,15 @@ let g:fzf_preview_window = ['right:75%']
 " let g:airline#extensions#whitespace#enabled = 0
 " silent! call airline#extensions#whitespace#disable()
 
+let g:coq_settings = { 'auto_start': 'shut-up'}
+
 lua require('config')
-lua require('ftplugin/java')
+
+augroup jdtls_lsp
+    autocmd!
+    autocmd FileType java lua require'ftplugin/java'
+augroup end
+
+" autoformat java files before saving
+autocmd BufWritePre *.java lua vim.lsp.buf.formatting_sync(nil, 1000)
+
