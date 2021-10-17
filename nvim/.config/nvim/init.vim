@@ -94,6 +94,8 @@ function! s:build_quickfix_list(lines)
   cc
 endfunction
 
+
+" open fzf res into quickfix list with ctrla ctrlq
 let g:fzf_action = {
   \ 'ctrl-q': function('s:build_quickfix_list'),
   \ 'ctrl-t': 'tab split',
