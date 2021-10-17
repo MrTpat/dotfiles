@@ -55,7 +55,7 @@ augroup END
 " FZF Settings
 let $FZF_DEFAULT_COMMAND = 'ag --hidden -g ""'
 nnoremap <c-p> :Files<cr>
-nnoremap <c-f> :Ag<cr>
+nnoremap <c-g> :Ag<cr>
 
 " LSP bindings
 nnoremap gd :lua vim.lsp.buf.definition()<cr>
@@ -80,6 +80,24 @@ augroup jdtls_lsp
     autocmd FileType java lua require'ftplugin/java'
 augroup end
 
+" using pyright via lspconfig
+lua require'ftplugin/python'
+
+
 " autoformat java files before saving
 autocmd BufWritePre *.java lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 1000)
 
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+
+let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
