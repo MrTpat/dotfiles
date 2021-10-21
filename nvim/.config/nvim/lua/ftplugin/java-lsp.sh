@@ -8,6 +8,8 @@ java \
 -Dlog.level=ALL \
 -noverify \
 -Xmx1G \
+-javaagent:$HOME/Downloads/lombok.jar \
+-Xbootclasspath/a:$HOME/Downloads/lombok.jar \
 -jar $HOME/Downloads/jdt/plugins/org.eclipse.equinox.launcher_*.jar \
 -configuration $HOME/Downloads/jdt/config_$SYSTEM \
 -data $HOME/Downloads/jdt/data/$dir \

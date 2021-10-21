@@ -85,8 +85,6 @@ lua require'ftplugin/python'
 
 
 " autoformat java files before saving
-autocmd BufWritePre *.java lua vim.lsp.buf.formatting_sync(nil, 1000)
-autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 1000)
 
 function! s:build_quickfix_list(lines)
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
