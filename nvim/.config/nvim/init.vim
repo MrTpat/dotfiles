@@ -5,16 +5,10 @@ Plug 'morhetz/gruvbox'
 Plug 'chrisbra/Colorizer'
 Plug 'tpope/vim-fugitive'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'beeender/Comrade'
 call plug#end()
+let g:deoplete#enable_at_startup = 1
 
 set hidden
 set tabstop=4
@@ -73,8 +67,6 @@ let g:fzf_preview_window = ['right:75%']
 " unicode symbols
 " let g:airline#extensions#whitespace#enabled = 0
 " silent! call airline#extensions#whitespace#disable()
-
-let g:coq_settings = { 'auto_start': 'shut-up'}
 
 lua require('config')
 
