@@ -21,3 +21,5 @@
 	email = ptilak142@gmail.com
 [log]
 	date = iso
+[pull]
+    rebase = true
