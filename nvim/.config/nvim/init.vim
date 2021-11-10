@@ -59,6 +59,8 @@ augroup END
 " FZF Settings
 let $FZF_DEFAULT_COMMAND = 'ag --hidden -g ""'
 nnoremap <c-p> :Files<cr>
+" below line prevents file names from showing up when calling Ag
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 nnoremap <c-g> :Ag<cr>
 
 
