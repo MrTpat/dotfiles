@@ -10,6 +10,8 @@ set noswapfile
 set number
 colorscheme gruvbox
 set clipboard=unnamed
+set softtabstop=4
+set shiftwidth=4
 ]])
 
 vim.api.nvim_set_keymap(
