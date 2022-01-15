@@ -12,6 +12,7 @@ colorscheme gruvbox
 set clipboard=unnamed
 set softtabstop=4
 set shiftwidth=4
+set nohlsearch
 ]])
 
 vim.api.nvim_set_keymap(
