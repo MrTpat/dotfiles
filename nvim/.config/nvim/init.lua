@@ -12,10 +12,20 @@ colorscheme gruvbox
 set clipboard=unnamed
 ]])
 
-return require('packer').startup(function()
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+vim.api.nvim_set_keymap(
+"n",
+"<c-p>",
+":Files<cr>",
+{ noremap = true }
+)
 
-  use 'morhetz/gruvbox'
+return require('packer').startup(function()
+	-- Packer can manage itself
+	use 'wbthomason/packer.nvim'
+
+	use 'morhetz/gruvbox'
+
+	use 'junegunn/fzf'
+	use 'junegunn/fzf.vim'
 
 end)
