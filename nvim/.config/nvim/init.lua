@@ -15,6 +15,8 @@ set shiftwidth=4
 set nohlsearch
 ]])
 
+vim.env.FZF_DEFAULT_COMMAND = 'ag -g ""'
+
 vim.api.nvim_set_keymap(
 "n",
 "<c-p>",
