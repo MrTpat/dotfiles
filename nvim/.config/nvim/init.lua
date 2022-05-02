@@ -15,12 +15,24 @@ set shiftwidth=4
 set nohlsearch
 ]])
 
-vim.env.FZF_DEFAULT_COMMAND = 'ag -g ""'
+vim.env.FZF_DEFAULT_COMMAND = 'ag --hidden -g ""'
 
 vim.api.nvim_set_keymap(
 "n",
 "<c-p>",
 ":Files<cr>",
+{ noremap = true }
+)
+
+-- file CONTENT only search, no file name
+vim.cmd([[
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+]])
+
+vim.api.nvim_set_keymap(
+"n",
+"<c-g>",
+":Ag<cr>",
 { noremap = true }
 )
 
