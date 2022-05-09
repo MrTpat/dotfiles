@@ -73,9 +73,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(git vi-mode)
 
 source $ZSH/oh-my-zsh.sh
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-
 
 # User configuration
 
@@ -108,5 +105,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 . $HOME/.zsh/plugins/bd/bd.zsh
 eval "$(atuin init zsh)"
 
-export PATH="$HOME/.poetry/bin:$PATH"
-source ~/.zprofile
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(atuin init zsh)"
+export SHELL=$(which zsh)

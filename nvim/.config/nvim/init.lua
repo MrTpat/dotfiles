@@ -1,4 +1,12 @@
 vim.cmd([[
+call plug#begin('~/.config/nvim')
+Plug 'morhetz/gruvbox'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+call plug#end()
+]])
+
+vim.cmd([[
 set hidden
 set cursorline
 set smartindent
@@ -35,14 +43,3 @@ vim.api.nvim_set_keymap(
 ":Ag<cr>",
 { noremap = true }
 )
-
-return require('packer').startup(function()
-	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
-
-	use 'morhetz/gruvbox'
-
-	use 'junegunn/fzf'
-	use 'junegunn/fzf.vim'
-
-end)
