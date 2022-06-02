@@ -109,3 +109,7 @@ eval "$(atuin init zsh)"
 
 eval "$(atuin init zsh)"
 export SHELL=$(which zsh)
+
+eval "$(atuin init zsh)"
+unsetopt correct_all  
+setopt correct
