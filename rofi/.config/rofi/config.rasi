@@ -1,6 +1,6 @@
 configuration {
 /*	modi: "window,run,ssh";*/
-/*	font: "mono 12";*/
+font: "JetBrains Mono 20";
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
@@ -145,4 +145,4 @@ configuration {
       sorting-method:    "name";
   }
 }
-@theme "gruvbox-dark"
+@theme "/usr/share/rofi/themes/DarkBlue.rasi"
