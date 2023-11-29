@@ -1,0 +1,191 @@
+diff --git a/README.md b/README.md
+index 8bf9933..6ab0ed7 100644
+--- a/README.md
++++ b/README.md
+@@ -14,3 +14,7 @@ Custom steps after installing:
+  -javaagent:/home/jemag/.config/nvim/dependencies/lombok.jar \
+   -Xbootclasspath/a:/home/jemag/.config/nvim/dependencies/lombok.jar \
+ to the sh file for java LSP
++
++
++** MISCELLANEOUS LEARNINGS **
++1) For a faster skhd use this: https://github.com/koekeishiya/skhd/issues/42
+diff --git a/kitty/.config/kitty/kitty.conf b/kitty/.config/kitty/kitty.conf
+index 1a943f1..d5705a1 100644
+--- a/kitty/.config/kitty/kitty.conf
++++ b/kitty/.config/kitty/kitty.conf
+@@ -1,4 +1,4 @@
+-font_size 14
++font_size 20
+ font_family JetBrains Mono
+ map f1 pipe @text window nvim -Rmn
+ map ctrl+shift+k scroll_line_up
+diff --git a/mac-i3/.skhdrc b/mac-i3/.skhdrc
+new file mode 100755
+index 0000000..c936ebe
+--- /dev/null
++++ b/mac-i3/.skhdrc
+@@ -0,0 +1,37 @@
++# change focus
++alt - h : yabai -m window --focus west
++alt - j : yabai -m window --focus south
++alt - k : yabai -m window --focus north
++alt - l : yabai -m window --focus east
++
++# i3 mimicking
++alt + shift - q : yabai -m window --close
++# shift window in current workspace
++alt + shift - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
++alt + shift - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
++alt + shift - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
++alt + shift - l : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
++# alternatively, use the arrow keys
++alt + shift - left : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
++alt + shift - down : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
++alt + shift - up : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
++alt + shift - right : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
++alt + shift - 1 : yabai -m window --space 1
++alt + shift - 2 : yabai -m window --space 2
++alt + shift - 3 : yabai -m window --space 3
++alt + shift - 4 : yabai -m window --space 4
++alt + shift - 5 : yabai -m window --space 5
++alt + shift - 6 : yabai -m window --space 6
++alt + shift - 7 : yabai -m window --space 7
++alt + shift - 8 : yabai -m window --space 8
++alt + shift - 9 : yabai -m window --space 9
++alt - 1 : yabai -m space --focus 1
++alt - 2 : yabai -m space --focus 2
++alt - 3 : yabai -m space --focus 3
++alt - 4 : yabai -m space --focus 4
++alt - 5 : yabai -m space --focus 5
++alt - 6 : yabai -m space --focus 6
++alt - 7 : yabai -m space --focus 7
++alt - 8 : yabai -m space --focus 8
++alt - 9 : yabai -m space --focus 9
++alt + shift - f : yabai -m window --toggle zoom-fullscreen
+diff --git a/mac-i3/.yabairc b/mac-i3/.yabairc
+new file mode 100755
+index 0000000..8e7ad05
+--- /dev/null
++++ b/mac-i3/.yabairc
+@@ -0,0 +1,43 @@
++#!/usr/bin/env sh
++
++#
++# for this to work you must configure sudo such that
++# it will be able to run the command without password
++#
++# see this wiki page for information:
++#  - https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
++#
++yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
++ sudo yabai --load-sa
++
++
++# global settings
++yabai -m config                                 \
++    mouse_follows_focus          off            \
++    focus_follows_mouse          off            \
++    window_origin_display        default        \
++    window_placement             second_child   \
++    window_zoom_persist          on             \
++    window_shadow                on             \
++    window_animation_duration    0.0            \
++    window_animation_frame_rate  120            \
++    window_opacity_duration      0.0            \
++    active_window_opacity        1.0            \
++    normal_window_opacity        0.9           \
++    window_opacity               on             \
++    insert_feedback_color        0xffd75f5f     \
++    split_ratio                  0.50           \
++    split_type                   auto           \
++    auto_balance                 off            \
++    top_padding                  0             \
++    bottom_padding               0             \
++    left_padding                 0             \
++    right_padding                0             \
++    window_gap                   0             \
++    layout                       bsp            \
++    mouse_modifier               fn             \
++    mouse_action1                move           \
++    mouse_action2                resize         \
++    mouse_drop_action            swap		\ 
++
++echo "yabai configuration loaded.."
+diff --git a/nvim/.config/nvim/init.lua b/nvim/.config/nvim/init.lua
+index 1f208f9..611b360 100644
+--- a/nvim/.config/nvim/init.lua
++++ b/nvim/.config/nvim/init.lua
+@@ -6,8 +6,8 @@ Plug 'junegunn/fzf.vim'
+ Plug 'projekt0n/github-nvim-theme'
+ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+ Plug 'nvim-lua/plenary.nvim'
+-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
++Plug 'tpope/vim-fugitive'
+ call plug#end()
+ ]])
+ 
+@@ -32,6 +32,14 @@ colorscheme github_dark_high_contrast
+ ]])
+ 
+ local telescope_builtin = require('telescope.builtin')
++require('telescope').setup {
++    defaults = {
++      layout_strategy = 'vertical',
++      layout_config = { height = 0.99 },
++
++    }
++
++}
+ vim.keymap.set('n', '<c-p>', telescope_builtin.find_files, {})
+ vim.keymap.set('n', '<c-g>', telescope_builtin.live_grep, {})
+ vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers, {})
+diff --git a/zsh/.zshrc b/zsh/.zshrc
+index c7cfde2..5abbd40 100644
+--- a/zsh/.zshrc
++++ b/zsh/.zshrc
+@@ -1,6 +1,16 @@
++# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
++# Initialization code that may require console input (password prompts, [y/n]
++# confirmations, etc.) must go above this block; everything else may go below.
++if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
++  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
++fi
++
+ # If you come from bash you might have to change your $PATH.
+ # export PATH=$HOME/bin:/usr/local/bin:$PATH
+ 
++# add homebrew
++export PATH="/opt/homebrew/bin:$PATH"
++
+ # Path to your oh-my-zsh installation.
+ export ZSH="$HOME/.oh-my-zsh"
+ 
+@@ -8,7 +18,7 @@ export ZSH="$HOME/.oh-my-zsh"
+ # load a random theme each time oh-my-zsh is loaded, in which case,
+ # to know which specific one was loaded, run: echo $RANDOM_THEME
+ # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+-ZSH_THEME="robbyrussell"
++ZSH_THEME="powerlevel10k/powerlevel10k"
+ 
+ # Set list of themes to pick from when loading at random
+ # Setting this variable when ZSH_THEME=random will cause zsh to load
+@@ -103,5 +113,16 @@ source $ZSH/oh-my-zsh.sh
+ # alias zshconfig="mate ~/.zshrc"
+ # alias ohmyzsh="mate ~/.oh-my-zsh"
+ 
++# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
++[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
++
+ eval "$(atuin init zsh)"
+-source $HOME/.profile
++
++#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
++export SDKMAN_DIR="$HOME/.sdkman"
++[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
++function aws-login() {  eval $( $OWL/bin/owl aws-login --username tpatel $@ ) ; };
++function change-realm() {  eval $( $OWL/bin/owl change-realm $@ ) ; };
++function aws-ec2() {
++  LINES=${LINES} COLUMNS=${COLUMNS} ${OWL}/command/pellets/ec2/scripts/login-wrapper "${@}"
++}

@@ -6,8 +6,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'projekt0n/github-nvim-theme'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.4' }
+Plug 'tpope/vim-fugitive'
 call plug#end()
 ]])
 
@@ -32,6 +32,24 @@ colorscheme github_dark_high_contrast
 ]])
 
 local telescope_builtin = require('telescope.builtin')
+require('telescope').setup {
+    defaults = {
+      layout_strategy = 'vertical',
+      layout_config = { height = 0.99 },
+      vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+	  "--hidden"
+      }
+
+    }
+}
+
 vim.keymap.set('n', '<c-p>', telescope_builtin.find_files, {})
 vim.keymap.set('n', '<c-g>', telescope_builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', telescope_builtin.buffers, {})

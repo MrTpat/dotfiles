@@ -104,7 +104,8 @@ bindsym Mod1+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym Mod1+s layout stacking
 bindsym Mod1+w layout tabbed
-bindsym Mod1+e layout toggle split
+#bindsym Mod1+e layout toggle all
+bindsym Mod1+e exec --no-startup-id "google-chrome https://i3wm.org/docs/refcard.html"
 
 # toggle tiling / floating
 bindsym Mod1+Shift+space floating toggle
